@@ -14,11 +14,11 @@ const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
 export const ScheduleGrid: React.FC = () => {
     const { selectedCourses, removeCourse } = useCourseStore();
-    const [semester, setSemester] = useState<'1' | '2'>('1');
+    const [semester, setSemester] = useState<'1' | '2' | '3' | '4'>('1');
 
     const getCourseForSlot = (day: string, block: string) => {
         return selectedCourses.filter(
-            (c) => c.WeekDay === day && c.TimeBlock === block && c.Semester === semester
+            (c) => c.WeekDay === day && c.TimeBlock === block && c.assignedSemester === semester
         );
     };
 
@@ -35,24 +35,18 @@ export const ScheduleGrid: React.FC = () => {
             {/* Toolbar */}
             <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-gray-50/50">
                 <div className="flex bg-gray-200 p-1 rounded-lg">
-                    <button
-                        className={cn(
-                            "px-4 py-1.5 rounded-md text-sm font-bold transition-all",
-                            semester === '1' ? "bg-white text-blue-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
-                        )}
-                        onClick={() => setSemester('1')}
-                    >
-                        Semester 1
-                    </button>
-                    <button
-                        className={cn(
-                            "px-4 py-1.5 rounded-md text-sm font-bold transition-all",
-                            semester === '2' ? "bg-white text-blue-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
-                        )}
-                        onClick={() => setSemester('2')}
-                    >
-                        Semester 2
-                    </button>
+                    {(['1', '2', '3', '4'] as const).map((s) => (
+                        <button
+                            key={s}
+                            className={cn(
+                                "px-4 py-1.5 rounded-md text-sm font-bold transition-all",
+                                semester === s ? "bg-white text-blue-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+                            )}
+                            onClick={() => setSemester(s)}
+                        >
+                            S{s}
+                        </button>
+                    ))}
                 </div>
 
                 <div className="flex gap-4 text-xs font-medium text-gray-500">

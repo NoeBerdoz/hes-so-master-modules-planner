@@ -13,6 +13,10 @@ export interface Course {
     TimeBlock: TimeBlock;
 }
 
+export interface SelectedCourse extends Course {
+    assignedSemester: '1' | '2' | '3' | '4';
+}
+
 export interface ValidationResult {
     tsm: { count: number; rec: number; valid: boolean; message?: string };
     ftp: { count: number; rec: number; valid: boolean; message?: string };

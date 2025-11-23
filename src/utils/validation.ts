@@ -1,4 +1,4 @@
-import type { Course, ValidationResult, Collision } from '../types';
+import type { SelectedCourse, ValidationResult, Collision } from '../types';
 
 const ECTS_PER_COURSE = 3;
 
@@ -10,7 +10,7 @@ const LIMITS = {
     BONUS: 3,
 };
 
-export const validateConstraints = (courses: Course[]): ValidationResult => {
+export const validateConstraints = (courses: SelectedCourse[]): ValidationResult => {
     const stats = {
         TSM: { count: 0, rec: 0 },
         FTP: { count: 0, rec: 0 },
@@ -97,14 +97,14 @@ export const validateConstraints = (courses: Course[]): ValidationResult => {
     };
 };
 
-export const checkCollisions = (courses: Course[]): Collision[] => {
+export const checkCollisions = (courses: SelectedCourse[]): Collision[] => {
     const collisions: Collision[] = [];
     for (let i = 0; i < courses.length; i++) {
         for (let j = i + 1; j < courses.length; j++) {
             const c1 = courses[i];
             const c2 = courses[j];
             if (
-                c1.Semester === c2.Semester &&
+                c1.assignedSemester === c2.assignedSemester &&
                 c1.WeekDay === c2.WeekDay &&
                 c1.TimeBlock === c2.TimeBlock
             ) {

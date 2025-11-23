@@ -102,8 +102,7 @@ export const AddModule: React.FC = () => {
                     filteredCourses.map((course) => (
                         <div
                             key={course.module}
-                            className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
-                            onClick={() => addCourse(course)}
+                            className="bg-white p-3 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow cursor-default group"
                         >
                             <div className="flex justify-between items-start mb-1">
                                 <span className="font-bold text-gray-800 text-sm">{course.module}</span>
@@ -115,9 +114,22 @@ export const AddModule: React.FC = () => {
                                 </span>
                             </div>
                             <p className="text-xs text-gray-500 line-clamp-2 mb-2">{course.title}</p>
-                            <div className="flex justify-between items-center text-[10px] text-gray-400">
+                            <div className="flex justify-between items-center text-[10px] text-gray-400 mb-2">
                                 <span>{course.WeekDay} • {course.TimeBlock}</span>
-                                <span className="group-hover:text-blue-600 font-bold transition-colors">+ Add</span>
+                            </div>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => addCourse(course, course.Semester === '1' ? '1' : '2')}
+                                    className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs font-bold py-1.5 rounded transition-colors"
+                                >
+                                    Add to Year 1 (S{course.Semester === '1' ? '1' : '2'})
+                                </button>
+                                <button
+                                    onClick={() => addCourse(course, course.Semester === '1' ? '3' : '4')}
+                                    className="flex-1 bg-purple-50 hover:bg-purple-100 text-purple-600 text-xs font-bold py-1.5 rounded transition-colors"
+                                >
+                                    Add to Year 2 (S{course.Semester === '1' ? '3' : '4'})
+                                </button>
                             </div>
                         </div>
                     ))
