@@ -16,7 +16,8 @@ const ConstraintItem = ({
     rec,
     valid,
     message,
-    colorClass
+    colorClass,
+    barColorClass
 }: {
     label: string;
     current: number;
@@ -26,6 +27,7 @@ const ConstraintItem = ({
     valid: boolean;
     message: string;
     colorClass: string;
+    barColorClass: string;
 }) => (
     <div className="mb-4">
         <div className="flex justify-between items-baseline mb-1">
@@ -34,7 +36,7 @@ const ConstraintItem = ({
         </div>
         <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-2">
             <div
-                className={cn("h-full transition-all duration-500", colorClass.replace('text-', 'bg-'))}
+                className={cn("h-full transition-all duration-500", barColorClass)}
                 style={{ width: `${Math.min(100, (current / max) * 100)}%` }}
             />
         </div>
@@ -95,6 +97,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
                     valid={validation.tsm.valid}
                     message={validation.tsm.message || ''}
                     colorClass="text-blue-600"
+                    barColorClass="bg-blue-600"
                 />
                 <ConstraintItem
                     label="FTP"
@@ -105,6 +108,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
                     valid={validation.ftp.valid}
                     message={validation.ftp.message || ''}
                     colorClass="text-purple-600"
+                    barColorClass="bg-purple-600"
                 />
                 <ConstraintItem
                     label="MA"
@@ -115,6 +119,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
                     valid={validation.ma.valid}
                     message={validation.ma.message || ''}
                     colorClass="text-emerald-500"
+                    barColorClass="bg-emerald-500"
                 />
                 <ConstraintItem
                     label="CM"
@@ -124,6 +129,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
                     valid={validation.cm.valid}
                     message={validation.cm.message || ''}
                     colorClass="text-amber-500"
+                    barColorClass="bg-amber-500"
                 />
             </section>
 
