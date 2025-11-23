@@ -11,6 +11,7 @@ export interface Course {
     Semester: Semester;
     WeekDay: WeekDay;
     TimeBlock: TimeBlock;
+    location?: string;
 }
 
 export interface SelectedCourse extends Course {

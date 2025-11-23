@@ -116,6 +116,15 @@ export const AddModule: React.FC = () => {
                             <p className="text-xs text-gray-500 line-clamp-2 mb-2">{course.title}</p>
                             <div className="flex justify-between items-center text-[10px] text-gray-400 mb-2">
                                 <span>{course.WeekDay} • {course.TimeBlock}</span>
+                                {course.location && (
+                                    <span className="flex items-center gap-1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>
+                                        {course.location}
+                                    </span>
+                                )}
                             </div>
                             <div className="flex gap-2">
                                 <button

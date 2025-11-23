@@ -30,23 +30,31 @@ export const ScheduleGrid: React.FC = () => {
         return 'bg-gray-100 border-gray-200 text-gray-800';
     };
 
+    const semesterECTS = selectedCourses.filter(c => c.assignedSemester === semester).length * 3;
+
     return (
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col h-full">
             {/* Toolbar */}
             <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-gray-50/50">
-                <div className="flex bg-gray-200 p-1 rounded-lg">
-                    {(['1', '2', '3', '4'] as const).map((s) => (
-                        <button
-                            key={s}
-                            className={cn(
-                                "px-4 py-1.5 rounded-md text-sm font-bold transition-all",
-                                semester === s ? "bg-white text-blue-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
-                            )}
-                            onClick={() => setSemester(s)}
-                        >
-                            S{s}
-                        </button>
-                    ))}
+                <div className="flex items-center gap-4">
+                    <div className="flex bg-gray-200 p-1 rounded-lg">
+                        {(['1', '2', '3', '4'] as const).map((s) => (
+                            <button
+                                key={s}
+                                className={cn(
+                                    "px-4 py-1.5 rounded-md text-sm font-bold transition-all",
+                                    semester === s ? "bg-white text-blue-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+                                )}
+                                onClick={() => setSemester(s)}
+                            >
+                                S{s}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="bg-white border border-gray-200 px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-2">
+                        <span className="text-xs font-bold text-gray-500 uppercase">Semester Credits:</span>
+                        <span className="text-sm font-bold text-blue-600">{semesterECTS} ECTS</span>
+                    </div>
                 </div>
 
                 <div className="flex gap-4 text-xs font-medium text-gray-500">
@@ -135,6 +143,15 @@ export const ScheduleGrid: React.FC = () => {
                                                         <ExternalLink size={12} />
                                                     </a>
                                                 </div>
+                                                {course.location && (
+                                                    <div className="mt-1 flex items-center gap-1 text-[9px] opacity-60 font-medium uppercase tracking-wider">
+                                                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                        {course.location}
+                                                    </div>
+                                                )}
                                             </div>
                                         ))}
                                     </div>

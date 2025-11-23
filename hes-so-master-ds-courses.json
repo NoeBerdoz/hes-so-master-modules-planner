@@ -6,7 +6,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "FTP_DeLearn",
@@ -15,7 +16,8 @@
     "type": "R",
     "Semester": "2",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Remote"
   },
   {
     "module": "FTP_DigImPro",
@@ -24,7 +26,8 @@
     "type": "O",
     "Semester": "1",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "FTP_AppStat",
@@ -33,7 +36,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Lausanne"
   },
   {
     "module": "FTP_Alg",
@@ -42,7 +46,8 @@
     "type": "O",
     "Semester": "1",
     "WeekDay": "Thursday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "FTP_CompAlg",
@@ -51,7 +56,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Thursday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "FTP_Optimiz",
@@ -60,7 +66,8 @@
     "type": "R",
     "Semester": "2",
     "WeekDay": "Thursday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "FTP_SmartMach",
@@ -69,7 +76,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Friday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Lausanne"
   },
   {
     "module": "TSM_DataMgmt",
@@ -78,7 +86,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Thursday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "TSM_SoftwEng",
@@ -87,7 +96,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "TSM_MachLeData",
@@ -96,7 +106,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Monday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "TSM_AdvDaBa",
@@ -105,7 +116,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Monday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Lausanne"
   },
   {
     "module": "TSM_AdvNLP",
@@ -114,7 +126,8 @@
     "type": "R",
     "Semester": "2",
     "WeekDay": "Monday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "TSM_CloudSys",
@@ -123,7 +136,8 @@
     "type": "O",
     "Semester": "1",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "TSM_AnSeqDa",
@@ -132,7 +146,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Lausanne"
   },
   {
     "module": "CM_AcWritPre",
@@ -141,7 +156,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Remote"
   },
   {
     "module": "CM_QRM",
@@ -150,7 +166,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Remote"
   },
   {
     "module": "CM_PrivLaw",
@@ -159,7 +176,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Monday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Remote"
   },
   {
     "module": "CM_Entrepr",
@@ -168,7 +186,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Remote"
   },
   {
     "module": "CM_AdvProjMgmt",
@@ -177,7 +196,8 @@
     "type": "O",
     "Semester": "1",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Remote"
   },
   {
     "module": "CM_InnChang",
@@ -186,7 +206,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Remote"
   },
   {
     "module": "CM_SustDev",
@@ -195,7 +216,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Lausanne"
   },
   {
     "module": "CM_ComplPro_B_ZH",
@@ -204,7 +226,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Remote"
   },
   {
     "module": "MA_ITProMan",
@@ -213,7 +236,8 @@
     "type": "O",
     "Semester": "1",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "MA_NTDE",
@@ -222,7 +246,8 @@
     "type": "R",
     "Semester": "2",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "MA_NTDA",
@@ -231,7 +256,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Monday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "MA_AdMoApp",
@@ -240,7 +266,8 @@
     "type": "O",
     "Semester": "1",
     "WeekDay": "Monday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Remote"
   },
   {
     "module": "MA_AUI",
@@ -249,7 +276,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Monday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "MA_GesSec",
@@ -258,7 +286,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Lausanne"
   },
   {
     "module": "MA_SIMI",
@@ -267,7 +296,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Monday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Genève"
   },
   {
     "module": "MA_LPSC",
@@ -276,7 +306,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Tuesday",
-    "TimeBlock": "TB4"
+    "TimeBlock": "TB4",
+    "location": "Lausanne"
   },
   {
     "module": "MA_MLBD",
@@ -285,7 +316,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Lausanne"
   },
   {
     "module": "MA_HPQC",
@@ -294,7 +326,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "MA_ASAD",
@@ -303,7 +336,8 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Wednesday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "MA_VI",
@@ -312,7 +346,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Friday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Lausanne"
   },
   {
     "module": "MA_NSA",
@@ -321,7 +356,8 @@
     "type": "O",
     "Semester": "1",
     "WeekDay": "Friday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Lausanne"
   },
   {
     "module": "MA_GPU",
@@ -330,7 +366,8 @@
     "type": "R",
     "Semester": "1",
     "WeekDay": "Friday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Neuchâtel"
   },
   {
     "module": "MA_GT",
@@ -339,7 +376,8 @@
     "type": "O",
     "Semester": "1",
     "WeekDay": "Friday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Lausanne"
   },
   {
     "module": "MA_WEM",
@@ -348,7 +386,8 @@
     "type": "R",
     "Semester": "2",
     "WeekDay": "Friday",
-    "TimeBlock": "TB1"
+    "TimeBlock": "TB1",
+    "location": "Yverdon-les-Bains"
   },
   {
     "module": "MA_BDA",
@@ -357,7 +396,8 @@
     "type": "R",
     "Semester": "2",
     "WeekDay": "Friday",
-    "TimeBlock": "TB2"
+    "TimeBlock": "TB2",
+    "location": "Yverdon-les-Bains"
   },
   {
     "module": "MA_CSEL1",
@@ -366,6 +406,27 @@
     "type": "O",
     "Semester": "2",
     "WeekDay": "Friday",
-    "TimeBlock": "TB3"
+    "TimeBlock": "TB3",
+    "location": "Fribourg"
+  },
+  {
+    "module": "PI",
+    "title": "Interdisciplinary project",
+    "link": "https://www.hes-so.ch/fileadmin/documents/HES-SO/Documents_HES-SO/pdf/ingenierie_architecture/master/Engineering_MSE/Descriptifs_Modules/MSE_-_Descriptif_de_module_-_Projet_Approfondissement__PA_.pdf",
+    "type": "R",
+    "Semester": "2",
+    "WeekDay": "Thursday",
+    "TimeBlock": "TB3",
+    "location": "Lausanne"
+  },
+  {
+    "module": "PI2",
+    "title": "Interdisciplinary project (2)",
+    "link": "https://www.hes-so.ch/fileadmin/documents/HES-SO/Documents_HES-SO/pdf/ingenierie_architecture/master/Engineering_MSE/Descriptifs_Modules/MSE_-_Descriptif_de_module_-_Projet_Approfondissement__PA_.pdf",
+    "type": "R",
+    "Semester": "2",
+    "WeekDay": "Thursday",
+    "TimeBlock": "TB4",
+    "location": "Lausanne"
   }
 ]

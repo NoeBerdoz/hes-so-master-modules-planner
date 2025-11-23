@@ -9,6 +9,7 @@ interface CourseStore {
     addCourse: (course: Course, assignedSemester: '1' | '2' | '3' | '4') => void;
     removeCourse: (moduleCode: string) => void;
     isCourseSelected: (moduleCode: string) => boolean;
+    refreshData: () => void;
 }
 
 export const useCourseStore = create<CourseStore>()(
@@ -30,6 +31,18 @@ export const useCourseStore = create<CourseStore>()(
                 })),
             isCourseSelected: (moduleCode) =>
                 get().selectedCourses.some((c) => c.module === moduleCode),
+            refreshData: () =>
+                set((state) => {
+                    const freshCoursesMap = new Map(state.allCourses.map((c) => [c.module, c]));
+                    const updatedSelectedCourses = state.selectedCourses.map((selected) => {
+                        const freshData = freshCoursesMap.get(selected.module);
+                        if (freshData) {
+                            return { ...freshData, assignedSemester: selected.assignedSemester };
+                        }
+                        return selected;
+                    });
+                    return { selectedCourses: updatedSelectedCourses };
+                }),
         }),
         {
             name: 'course-planner-storage',
