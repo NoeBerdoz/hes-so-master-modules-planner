@@ -8,6 +8,7 @@ export const AddModule: React.FC = () => {
     const [search, setSearch] = useState('');
     const [semesterFilter, setSemesterFilter] = useState<'1' | '2' | null>(null);
     const [typeFilter, setTypeFilter] = useState<'R' | 'O' | null>(null);
+    const [dayFilter, setDayFilter] = useState<string | null>(null);
 
     const filteredCourses = useMemo(() => {
         return allCourses.filter((course) => {
@@ -16,10 +17,11 @@ export const AddModule: React.FC = () => {
                 course.title.toLowerCase().includes(search.toLowerCase());
             const matchesSemester = semesterFilter ? course.Semester === semesterFilter : true;
             const matchesType = typeFilter ? course.type === typeFilter : true;
+            const matchesDay = dayFilter ? course.WeekDay === dayFilter : true;
             const notSelected = !isCourseSelected(course.module);
-            return matchesSearch && matchesSemester && matchesType && notSelected;
+            return matchesSearch && matchesSemester && matchesType && matchesDay && notSelected;
         });
-    }, [allCourses, search, semesterFilter, typeFilter, isCourseSelected]);
+    }, [allCourses, search, semesterFilter, typeFilter, dayFilter, isCourseSelected]);
 
     return (
         <div className="flex flex-col h-full">
@@ -92,6 +94,22 @@ export const AddModule: React.FC = () => {
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <div>
+                    <label className="text-xs font-bold text-gray-500 uppercase mb-1 block">Day</label>
+                    <select
+                        className="w-full py-1.5 px-2 bg-white border border-gray-200 rounded-lg text-xs font-medium text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={dayFilter || ''}
+                        onChange={(e) => setDayFilter(e.target.value || null)}
+                    >
+                        <option value="">All Days</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                    </select>
                 </div>
             </div>
 
