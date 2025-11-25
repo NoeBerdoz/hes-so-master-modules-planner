@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Master Course Planner 🎓
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A simple tool to plan your HES-SO Master's degree in Data Science.**
 
-Currently, two official plugins are available:
+This application helps you choose your courses, organize your schedule, and make sure you meet all the requirements for your degree.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Placeholder: Screenshot of the main application view]
 
-## React Compiler
+## Who is this for? 👩‍🎓👨‍🎓
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This tool is designed for **HES-SO Master's students** in the **Data Science & Engineering** major.
 
-## Expanding the ESLint configuration
+## What can you do? 🚀
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **Plan your 2 years**: Organize your courses over 4 semesters.
+-   **Check the rules**: The app automatically checks if you have enough credits in each category (TSM, FTP, MA, CM).
+-   **Avoid conflicts**: See immediately if two courses happen at the same time.
+-   **Save your plan**: Your selection is saved automatically in your browser.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## How to use it 🛠️
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1. Add Courses
+Use the panel on the right to find courses. You can search by name or filter by:
+-   **Semester** (S1 or S2)
+-   **Type** (Recommended or Optional)
+-   **Day** of the week
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Click **"Add to Year 1"** or **"Add to Year 2"** to put the course in your schedule.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+![Placeholder: Screenshot of the Add Module panel]
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2. Check your Schedule
+The main calendar shows your week.
+-   Use the tabs (**S1, S2, S3, S4**) to switch between semesters.
+-   See the **Location** of each course on the card.
+-   **Red cards** mean there is a time conflict!
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+![Placeholder: Screenshot of the Schedule Grid with a conflict]
+
+### 3. Verify Credits
+The sidebar on the left shows your progress.
+-   **Green check**: You have enough credits.
+-   **Red alert**: You need more credits or have too many.
+-   **Progress bars** show how close you are to the limit.
+
+![Placeholder: Screenshot of the Constraints Sidebar]
+
+## Run it locally 💻
+
+If you want to run the code on your own computer:
+
+1.  Install dependencies: `npm install`
+2.  Start the app: `npm run dev`
+3.  Build for production: `npm run build`
