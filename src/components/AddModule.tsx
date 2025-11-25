@@ -58,7 +58,7 @@ export const AddModule: React.FC = () => {
                                 )}
                                 onClick={() => setSemesterFilter(semesterFilter === '1' ? null : '1')}
                             >
-                                S1
+                                Autumn
                             </button>
                             <button
                                 className={cn(
@@ -67,7 +67,7 @@ export const AddModule: React.FC = () => {
                                 )}
                                 onClick={() => setSemesterFilter(semesterFilter === '2' ? null : '2')}
                             >
-                                S2
+                                Spring
                             </button>
                         </div>
                     </div>
@@ -149,13 +149,13 @@ export const AddModule: React.FC = () => {
                                     onClick={() => addCourse(course, course.Semester === '1' ? '1' : '2')}
                                     className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 text-xs font-bold py-1.5 rounded transition-colors"
                                 >
-                                    Add to Year 1 (S{course.Semester === '1' ? '1' : '2'})
+                                    Add to Year 1 ({course.Semester === '1' ? 'Autumn' : 'Spring'})
                                 </button>
                                 <button
                                     onClick={() => addCourse(course, course.Semester === '1' ? '3' : '4')}
                                     className="flex-1 bg-purple-50 hover:bg-purple-100 text-purple-600 text-xs font-bold py-1.5 rounded transition-colors"
                                 >
-                                    Add to Year 2 (S{course.Semester === '1' ? '3' : '4'})
+                                    Add to Year 2 ({course.Semester === '1' ? 'Autumn' : 'Spring'})
                                 </button>
                             </div>
                         </div>
