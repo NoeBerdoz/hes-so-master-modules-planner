@@ -4,6 +4,8 @@
 
 This application helps you choose your courses, organize your schedule, and make sure you meet all the requirements for your degree.
 
+**You can access the tool here:** https://noeberdoz.github.io/hes-so-master-modules-planner/
+
 <img width="1868" height="1012" alt="image" src="https://github.com/user-attachments/assets/26fa9821-4bd7-40d3-8df9-eb095de31b0c" />
 
 ## Who is this for? 👀
