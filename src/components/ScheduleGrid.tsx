@@ -31,7 +31,9 @@ export const ScheduleGrid: React.FC = () => {
         return 'bg-gray-100 border-gray-200 text-gray-800';
     };
 
-    const semesterECTS = selectedCourses.filter(c => c.assignedSemester === semester).length * 3;
+    const semesterECTS = selectedCourses
+        .filter(c => c.assignedSemester === semester)
+        .reduce((sum, c) => sum + (c.credits || 3), 0);
 
     return (
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden flex flex-col h-full">

@@ -1,7 +1,5 @@
 import type { SelectedCourse, ValidationResult, Collision } from '../types';
 
-const ECTS_PER_COURSE = 3;
-
 const LIMITS = {
     TSM: { max: 12, minRec: 6 },
     FTP: { max: 9, minRec: 3 },
@@ -20,10 +18,11 @@ export const validateConstraints = (courses: SelectedCourse[]): ValidationResult
 
     courses.forEach((course) => {
         const prefix = course.module.split('_')[0] as keyof typeof stats;
+        const credits = course.credits || 3;
         if (stats[prefix]) {
-            stats[prefix].count += ECTS_PER_COURSE;
+            stats[prefix].count += credits;
             if (course.type === 'R') {
-                stats[prefix].rec += ECTS_PER_COURSE;
+                stats[prefix].rec += credits;
             }
         }
     });
@@ -92,7 +91,7 @@ export const validateConstraints = (courses: SelectedCourse[]): ValidationResult
             valid: bonusValid,
             message: bonusValid ? 'OK' : `Max ${LIMITS.BONUS} ECTS overflow allowed`,
         },
-        totalEcts: courses.length * ECTS_PER_COURSE,
+        totalEcts: courses.reduce((sum, c) => sum + (c.credits || 3), 0),
         isValid,
     };
 };

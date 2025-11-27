@@ -12,6 +12,7 @@ export interface Course {
     WeekDay: WeekDay;
     TimeBlock: TimeBlock;
     location?: string;
+    credits?: number;
 }
 
 export interface SelectedCourse extends Course {

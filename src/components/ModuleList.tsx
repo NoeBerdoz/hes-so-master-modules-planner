@@ -6,7 +6,7 @@ export const ModuleList: React.FC = () => {
     const { getSelectedCourses } = useCourseStore();
     const selectedCourses = getSelectedCourses();
 
-    const totalECTS = selectedCourses.length * 3;
+    const totalECTS = selectedCourses.reduce((sum, course) => sum + (course.credits || 3), 0);
 
     return (
         <div className="bg-white rounded-xl border border-gray-200 p-4 flex items-center justify-between shadow-sm">
