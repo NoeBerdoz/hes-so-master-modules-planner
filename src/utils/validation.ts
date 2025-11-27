@@ -1,14 +1,6 @@
-import type { SelectedCourse, ValidationResult, Collision } from '../types';
+import type { SelectedCourse, ValidationResult, Collision, ValidationRules } from '../types';
 
-const LIMITS = {
-    TSM: { max: 12, minRec: 6 },
-    FTP: { max: 9, minRec: 3 },
-    MA: { max: 18, minRec: 12 },
-    CM: { max: 6, minRec: 0 },
-    BONUS: 3,
-};
-
-export const validateConstraints = (courses: SelectedCourse[]): ValidationResult => {
+export const validateConstraints = (courses: SelectedCourse[], rules: ValidationRules): ValidationResult => {
     const stats = {
         TSM: { count: 0, rec: 0 },
         FTP: { count: 0, rec: 0 },
@@ -33,15 +25,15 @@ export const validateConstraints = (courses: SelectedCourse[]): ValidationResult
         return { validRec, overflow };
     };
 
-    const tsmStatus = getStatus(stats.TSM.count, stats.TSM.rec, LIMITS.TSM);
-    const ftpStatus = getStatus(stats.FTP.count, stats.FTP.rec, LIMITS.FTP);
-    const maStatus = getStatus(stats.MA.count, stats.MA.rec, LIMITS.MA);
-    const cmStatus = getStatus(stats.CM.count, stats.CM.rec, LIMITS.CM);
+    const tsmStatus = getStatus(stats.TSM.count, stats.TSM.rec, rules.TSM);
+    const ftpStatus = getStatus(stats.FTP.count, stats.FTP.rec, rules.FTP);
+    const maStatus = getStatus(stats.MA.count, stats.MA.rec, rules.MA);
+    const cmStatus = getStatus(stats.CM.count, stats.CM.rec, rules.CM);
 
     const totalOverflow =
         tsmStatus.overflow + ftpStatus.overflow + maStatus.overflow + cmStatus.overflow;
 
-    const bonusValid = totalOverflow <= LIMITS.BONUS;
+    const bonusValid = totalOverflow <= rules.BONUS;
 
     const isValid =
         tsmStatus.validRec &&
@@ -56,7 +48,7 @@ export const validateConstraints = (courses: SelectedCourse[]): ValidationResult
             rec: stats.TSM.rec,
             valid: tsmStatus.validRec && tsmStatus.overflow === 0, // Individual validity without bonus consideration for UI
             message: !tsmStatus.validRec
-                ? `Need ${LIMITS.TSM.minRec} ECTS Rec.`
+                ? `Need ${rules.TSM.minRec} ECTS Rec.`
                 : tsmStatus.overflow > 0
                     ? `Over max by ${tsmStatus.overflow}`
                     : 'OK',
@@ -66,7 +58,7 @@ export const validateConstraints = (courses: SelectedCourse[]): ValidationResult
             rec: stats.FTP.rec,
             valid: ftpStatus.validRec && ftpStatus.overflow === 0,
             message: !ftpStatus.validRec
-                ? `Need ${LIMITS.FTP.minRec} ECTS Rec.`
+                ? `Need ${rules.FTP.minRec} ECTS Rec.`
                 : ftpStatus.overflow > 0
                     ? `Over max by ${ftpStatus.overflow}`
                     : 'OK',
@@ -76,7 +68,7 @@ export const validateConstraints = (courses: SelectedCourse[]): ValidationResult
             rec: stats.MA.rec,
             valid: maStatus.validRec && maStatus.overflow === 0,
             message: !maStatus.validRec
-                ? `Need ${LIMITS.MA.minRec} ECTS Rec.`
+                ? `Need ${rules.MA.minRec} ECTS Rec.`
                 : maStatus.overflow > 0
                     ? `Over max by ${maStatus.overflow}`
                     : 'OK',
@@ -89,7 +81,7 @@ export const validateConstraints = (courses: SelectedCourse[]): ValidationResult
         bonus: {
             count: totalOverflow,
             valid: bonusValid,
-            message: bonusValid ? 'OK' : `Max ${LIMITS.BONUS} ECTS overflow allowed`,
+            message: bonusValid ? 'OK' : `Max ${rules.BONUS} ECTS overflow allowed`,
         },
         totalEcts: courses.reduce((sum, c) => sum + (c.credits || 3), 0),
         isValid,

@@ -1,11 +1,11 @@
-import React from 'react';
-import type { ValidationResult } from '../types';
+import type { ValidationResult, ValidationRules } from '../types';
 import { AddModule } from './AddModule';
 import { cn } from '../utils/cn';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 interface SidebarProps {
     validation: ValidationResult;
+    rules: ValidationRules;
 }
 
 const ConstraintItem = ({
@@ -55,7 +55,7 @@ const ConstraintItem = ({
     </div>
 );
 
-export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ validation, rules }) => {
     return (
         <div className="p-6 flex flex-col gap-8">
             {/* Constraints Check */}
@@ -74,25 +74,25 @@ export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
                     <div className="flex justify-between items-center mb-2">
                         <span className="font-bold text-gray-700">Bonus Credits</span>
                         <div className="flex gap-1">
-                            {[1, 2, 3].map((i) => (
+                            {Array.from({ length: rules.BONUS }).map((_, i) => (
                                 <div
                                     key={i}
                                     className={cn(
                                         "w-2.5 h-2.5 rounded-full transition-colors",
-                                        i <= validation.bonus.count ? "bg-emerald-400" : "bg-gray-200"
+                                        i < validation.bonus.count ? "bg-emerald-400" : "bg-gray-200"
                                     )}
                                 />
                             ))}
                         </div>
                     </div>
-                    <p className="text-xs text-gray-400">Max 3 ECTS overflow allowed</p>
+                    <p className="text-xs text-gray-400">Max {rules.BONUS} ECTS overflow allowed</p>
                 </div>
 
                 <ConstraintItem
                     label="TSM"
                     current={validation.tsm.count}
-                    max={12}
-                    minRec={6}
+                    max={rules.TSM.max}
+                    minRec={rules.TSM.minRec}
                     rec={validation.tsm.rec}
                     valid={validation.tsm.valid}
                     message={validation.tsm.message || ''}
@@ -102,8 +102,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
                 <ConstraintItem
                     label="FTP"
                     current={validation.ftp.count}
-                    max={9}
-                    minRec={3}
+                    max={rules.FTP.max}
+                    minRec={rules.FTP.minRec}
                     rec={validation.ftp.rec}
                     valid={validation.ftp.valid}
                     message={validation.ftp.message || ''}
@@ -113,8 +113,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
                 <ConstraintItem
                     label="MA"
                     current={validation.ma.count}
-                    max={18}
-                    minRec={12}
+                    max={rules.MA.max}
+                    minRec={rules.MA.minRec}
                     rec={validation.ma.rec}
                     valid={validation.ma.valid}
                     message={validation.ma.message || ''}
@@ -124,8 +124,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ validation }) => {
                 <ConstraintItem
                     label="CM"
                     current={validation.cm.count}
-                    max={6}
-                    minRec={0}
+                    max={rules.CM.max}
+                    minRec={rules.CM.minRec}
                     valid={validation.cm.valid}
                     message={validation.cm.message || ''}
                     colorClass="text-amber-500"

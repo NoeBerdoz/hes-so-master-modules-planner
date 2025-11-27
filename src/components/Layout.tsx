@@ -10,8 +10,18 @@ import { getProgramById } from '../data/programs';
 export const Layout: React.FC = () => {
     const { getSelectedCourses, currentProgramId, setProgram } = useCourseStore();
     const selectedCourses = getSelectedCourses();
-    const validation = validateConstraints(selectedCourses);
     const currentProgram = currentProgramId ? getProgramById(currentProgramId) : null;
+
+    // Default rules fallback if program not found (shouldn't happen)
+    const rules = currentProgram?.validationRules || {
+        TSM: { max: 12, minRec: 6 },
+        FTP: { max: 9, minRec: 3 },
+        MA: { max: 18, minRec: 12 },
+        CM: { max: 6, minRec: 0 },
+        BONUS: 3,
+    };
+
+    const validation = validateConstraints(selectedCourses, rules);
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
@@ -73,7 +83,7 @@ export const Layout: React.FC = () => {
             <main className="flex-1 flex overflow-hidden">
                 {/* Sidebar */}
                 <aside className="w-80 bg-white border-r border-gray-200 flex flex-col overflow-y-auto shrink-0">
-                    <Sidebar validation={validation} />
+                    <Sidebar validation={validation} rules={rules} />
                 </aside>
 
                 {/* Schedule Area */}

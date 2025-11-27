@@ -33,3 +33,11 @@ export interface Collision {
     course1: Course;
     course2: Course;
 }
+
+export interface ValidationRules {
+    TSM: { max: number; minRec: number };
+    FTP: { max: number; minRec: number };
+    MA: { max: number; minRec: number };
+    CM: { max: number; minRec: number };
+    BONUS: number;
+}
