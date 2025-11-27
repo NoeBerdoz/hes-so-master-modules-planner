@@ -13,7 +13,8 @@ const TIME_BLOCKS = [
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
 export const ScheduleGrid: React.FC = () => {
-    const { selectedCourses, removeCourse } = useCourseStore();
+    const { removeCourse, getSelectedCourses } = useCourseStore();
+    const selectedCourses = getSelectedCourses();
     const [semester, setSemester] = useState<'1' | '2' | '3' | '4'>('1');
 
     const getCourseForSlot = (day: string, block: string) => {

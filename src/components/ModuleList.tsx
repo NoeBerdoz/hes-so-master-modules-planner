@@ -3,7 +3,9 @@ import { useCourseStore } from '../store/useCourseStore';
 import { cn } from '../utils/cn';
 
 export const ModuleList: React.FC = () => {
-    const { selectedCourses } = useCourseStore();
+    const { getSelectedCourses } = useCourseStore();
+    const selectedCourses = getSelectedCourses();
+
     const totalECTS = selectedCourses.length * 3;
 
     return (

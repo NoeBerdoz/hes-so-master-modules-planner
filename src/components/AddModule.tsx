@@ -4,7 +4,8 @@ import { Plus, Search } from 'lucide-react';
 import { cn } from '../utils/cn';
 
 export const AddModule: React.FC = () => {
-    const { allCourses, addCourse, isCourseSelected } = useCourseStore();
+    const { addCourse, isCourseSelected, getAllCourses } = useCourseStore();
+    const allCourses = getAllCourses();
     const [search, setSearch] = useState('');
     const [semesterFilter, setSemesterFilter] = useState<'1' | '2' | null>(null);
     const [typeFilter, setTypeFilter] = useState<'R' | 'O' | null>(null);

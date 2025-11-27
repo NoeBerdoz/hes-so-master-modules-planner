@@ -2,13 +2,16 @@ import React from 'react';
 import { Sidebar } from './Sidebar';
 import { ScheduleGrid } from './ScheduleGrid';
 import { ModuleList } from './ModuleList';
-import { Printer, RefreshCw } from 'lucide-react';
+import { Printer, RefreshCw, ChevronLeft } from 'lucide-react';
 import { useCourseStore } from '../store/useCourseStore';
 import { validateConstraints } from '../utils/validation';
+import { getProgramById } from '../data/programs';
 
 export const Layout: React.FC = () => {
-    const selectedCourses = useCourseStore((state) => state.selectedCourses);
+    const { getSelectedCourses, currentProgramId, setProgram } = useCourseStore();
+    const selectedCourses = getSelectedCourses();
     const validation = validateConstraints(selectedCourses);
+    const currentProgram = currentProgramId ? getProgramById(currentProgramId) : null;
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
@@ -18,10 +21,20 @@ export const Layout: React.FC = () => {
                     <div className="bg-blue-600 text-white p-2 rounded-lg font-bold text-xl">MSE</div>
                     <div>
                         <h1 className="text-xl font-bold text-gray-800 leading-tight">Course Planner</h1>
-                        <p className="text-sm text-gray-500">Data Science Engineering</p>
+                        <p className="text-sm text-gray-500">{currentProgram?.name || 'Master Program'}</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-6">
+                    <button
+                        onClick={() => setProgram('')}
+                        className="text-sm font-bold text-gray-500 hover:text-blue-600 flex items-center gap-1 transition-colors"
+                    >
+                        <ChevronLeft size={16} />
+                        Change Program
+                    </button>
+
+                    <div className="h-6 w-px bg-gray-200"></div>
+
                     <div className="flex flex-col items-end">
                         <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Compliance</span>
                         <div className="flex items-center gap-2">
@@ -45,7 +58,7 @@ export const Layout: React.FC = () => {
                             title="Reset"
                             onClick={() => {
                                 if (confirm('Are you sure you want to reset your plan?')) {
-                                    localStorage.removeItem('course-planner-storage');
+                                    localStorage.removeItem('course-planner-storage-v2');
                                     window.location.reload();
                                 }
                             }}

@@ -1,52 +1,114 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Course, SelectedCourse } from '../types';
-import coursesData from '../../hes-so-master-ds-courses.json';
+import { PROGRAMS, getProgramById } from '../data/programs';
 
 interface CourseStore {
-    allCourses: Course[];
-    selectedCourses: SelectedCourse[];
+    currentProgramId: string | null;
+    selectedCoursesByProgram: Record<string, SelectedCourse[]>;
+
+    // Actions
+    setProgram: (programId: string) => void;
     addCourse: (course: Course, assignedSemester: '1' | '2' | '3' | '4') => void;
     removeCourse: (moduleCode: string) => void;
     isCourseSelected: (moduleCode: string) => boolean;
     refreshData: () => void;
+
+    // Getters (computed)
+    getAllCourses: () => Course[];
+    getSelectedCourses: () => SelectedCourse[];
 }
 
 export const useCourseStore = create<CourseStore>()(
     persist(
         (set, get) => ({
-            allCourses: coursesData as Course[],
-            selectedCourses: [],
+            currentProgramId: null,
+            selectedCoursesByProgram: {},
+
+            setProgram: (programId) => set({ currentProgramId: programId }),
+
             addCourse: (course, assignedSemester) =>
                 set((state) => {
-                    if (state.selectedCourses.some((c) => c.module === course.module)) {
+                    const programId = state.currentProgramId;
+                    if (!programId) return state;
+
+                    const currentSelections = state.selectedCoursesByProgram[programId] || [];
+
+                    if (currentSelections.some((c) => c.module === course.module)) {
                         return state;
                     }
                     const newCourse: SelectedCourse = { ...course, assignedSemester };
-                    return { selectedCourses: [...state.selectedCourses, newCourse] };
+
+                    return {
+                        selectedCoursesByProgram: {
+                            ...state.selectedCoursesByProgram,
+                            [programId]: [...currentSelections, newCourse],
+                        },
+                    };
                 }),
+
             removeCourse: (moduleCode) =>
-                set((state) => ({
-                    selectedCourses: state.selectedCourses.filter((c) => c.module !== moduleCode),
-                })),
-            isCourseSelected: (moduleCode) =>
-                get().selectedCourses.some((c) => c.module === moduleCode),
+                set((state) => {
+                    const programId = state.currentProgramId;
+                    if (!programId) return state;
+
+                    const currentSelections = state.selectedCoursesByProgram[programId] || [];
+
+                    return {
+                        selectedCoursesByProgram: {
+                            ...state.selectedCoursesByProgram,
+                            [programId]: currentSelections.filter((c) => c.module !== moduleCode),
+                        },
+                    };
+                }),
+
+            isCourseSelected: (moduleCode) => {
+                const state = get();
+                const programId = state.currentProgramId;
+                if (!programId) return false;
+                const currentSelections = state.selectedCoursesByProgram[programId] || [];
+                return currentSelections.some((c) => c.module === moduleCode);
+            },
+
             refreshData: () =>
                 set((state) => {
-                    const freshCoursesMap = new Map(state.allCourses.map((c) => [c.module, c]));
-                    const updatedSelectedCourses = state.selectedCourses.map((selected) => {
-                        const freshData = freshCoursesMap.get(selected.module);
-                        if (freshData) {
-                            return { ...freshData, assignedSemester: selected.assignedSemester };
-                        }
-                        return selected;
+                    const newSelectionsByProgram = { ...state.selectedCoursesByProgram };
+
+                    Object.keys(newSelectionsByProgram).forEach(programId => {
+                        const program = getProgramById(programId);
+                        if (!program) return;
+
+                        const freshCoursesMap = new Map(program.courses.map((c) => [c.module, c]));
+                        newSelectionsByProgram[programId] = newSelectionsByProgram[programId].map(selected => {
+                            const freshData = freshCoursesMap.get(selected.module);
+                            if (freshData) {
+                                return { ...freshData, assignedSemester: selected.assignedSemester };
+                            }
+                            return selected;
+                        });
                     });
-                    return { selectedCourses: updatedSelectedCourses };
+
+                    return { selectedCoursesByProgram: newSelectionsByProgram };
                 }),
+
+            getAllCourses: () => {
+                const state = get();
+                if (!state.currentProgramId) return [];
+                return getProgramById(state.currentProgramId)?.courses || [];
+            },
+
+            getSelectedCourses: () => {
+                const state = get();
+                if (!state.currentProgramId) return [];
+                return state.selectedCoursesByProgram[state.currentProgramId] || [];
+            }
         }),
         {
-            name: 'course-planner-storage',
-            partialize: (state) => ({ selectedCourses: state.selectedCourses }),
+            name: 'course-planner-storage-v2', // Changed name to avoid conflicts with old structure
+            partialize: (state) => ({
+                currentProgramId: state.currentProgramId,
+                selectedCoursesByProgram: state.selectedCoursesByProgram
+            }),
         }
     )
 );
