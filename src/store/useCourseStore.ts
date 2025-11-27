@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { Course, SelectedCourse } from '../types';
-import { PROGRAMS, getProgramById } from '../data/programs';
+import { getProgramById } from '../data/programs';
 
 interface CourseStore {
     currentProgramId: string | null;

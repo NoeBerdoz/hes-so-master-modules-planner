@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCourseStore } from '../store/useCourseStore';
 import { PROGRAMS } from '../data/programs';
-import { GraduationCap, ArrowRight } from 'lucide-react';
+import { GraduationCap, ArrowRight, Info, ExternalLink } from 'lucide-react';
 
 export const ProgramSelector: React.FC = () => {
     const setProgram = useCourseStore((state) => state.setProgram);
@@ -9,7 +9,7 @@ export const ProgramSelector: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6 font-sans">
             <div className="max-w-4xl w-full">
-                <div className="text-center mb-12">
+                <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-6 shadow-lg shadow-blue-200">
                         <GraduationCap size={32} className="text-white" />
                     </div>
@@ -18,6 +18,30 @@ export const ProgramSelector: React.FC = () => {
                         Choose your specialization to start planning your courses.
                         Each program has its own specific modules and requirements.
                     </p>
+                </div>
+
+                {/* Disclaimer Alert */}
+                <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-8 flex gap-3 text-sm text-blue-800 shadow-sm">
+                    <Info className="shrink-0 mt-0.5" size={18} />
+                    <div className="space-y-2">
+                        <p className="font-medium">
+                            Information updated November 2025 based on official HES-SO data.
+                        </p>
+                        <ul className="list-disc list-inside space-y-1 text-blue-700/80">
+                            <li>Brasov modules for the Cybersecurity program are currently not available in this app.</li>
+                            <li>
+                                Verify all details with the official{' '}
+                                <a
+                                    href="https://www.hes-so.ch/fileadmin/documents/HES-SO/Documents_HES-SO/pdf/ingenierie_architecture/master/Engineering_MSE/MSE_ModuleOfferSchedule_AllProfiles_25-26.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline hover:text-blue-900 inline-flex items-center gap-1"
+                                >
+                                    Modules Plan Schedule (PDF) <ExternalLink size={12} />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -41,10 +65,6 @@ export const ProgramSelector: React.FC = () => {
                             </div>
                         </button>
                     ))}
-                </div>
-
-                <div className="mt-12 text-center text-sm text-gray-400">
-                    More programs coming soon...
                 </div>
             </div>
         </div>
