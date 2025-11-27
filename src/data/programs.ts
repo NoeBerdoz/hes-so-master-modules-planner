@@ -3,6 +3,7 @@ import softwareEngineeringCourses from '../../hes-so-master-cs-s-courses.json';
 import cyberSecurityCourses from '../../hes-so-master-cs-cy-courses.json';
 import embeddedSystemsCourses from '../../hes-so-master-cs-e-courses.json';
 import communicationSystemsCourses from '../../hes-so-master-cs-c-courses.json';
+import informationAndCybersecurityCourses from '../../hes-so-master-ics-courses.json';
 import type { Course } from '../types';
 
 export interface Program {
@@ -42,6 +43,12 @@ export const PROGRAMS: Program[] = [
         name: 'Computer Science - Communication Systems',
         description: 'Master of Science in Engineering - Computer Science (Communication Systems)',
         courses: communicationSystemsCourses as Course[],
+    },
+    {
+        id: 'ics',
+        name: 'Information and Cybersecurity',
+        description: 'Master of Science in Engineering - Information and Cybersecurity',
+        courses: informationAndCybersecurityCourses as Course[],
     },
 ];
 

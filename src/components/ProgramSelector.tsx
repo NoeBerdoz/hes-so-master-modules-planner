@@ -28,7 +28,7 @@ export const ProgramSelector: React.FC = () => {
                             Information updated November 2025 based on official HES-SO data.
                         </p>
                         <ul className="list-disc list-inside space-y-1 text-blue-700/80">
-                            <li>Brasov modules for the Cybersecurity program are currently not available in this app.</li>
+                            <li>Brasov modules for the ICS - Information and Cybersecurity program are currently not available in this app.</li>
                             <li>
                                 Verify all details with the official{' '}
                                 <a
