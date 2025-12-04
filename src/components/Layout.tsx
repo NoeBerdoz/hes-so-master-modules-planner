@@ -2,7 +2,8 @@ import React from 'react';
 import { Sidebar } from './Sidebar';
 import { ScheduleGrid } from './ScheduleGrid';
 import { ModuleList } from './ModuleList';
-import { Printer, RefreshCw, ChevronLeft } from 'lucide-react';
+import { RefreshCw, ChevronLeft } from 'lucide-react';
+import { GithubIcon } from './GithubIcon';
 import { useCourseStore } from '../store/useCourseStore';
 import { validateConstraints } from '../utils/validation';
 import { getProgramById } from '../data/programs';
@@ -60,9 +61,15 @@ export const Layout: React.FC = () => {
                         </div>
                     </div>
                     <div className="flex items-center gap-3">
-                        <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Print">
-                            <Printer size={20} />
-                        </button>
+                        <a
+                            href="https://github.com/NoeBerdoz/hes-so-master-modules-planner"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                            title="Report an issue on GitHub"
+                        >
+                            <GithubIcon size={20} />
+                        </a>
                         <button
                             className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
                             title="Reset"
