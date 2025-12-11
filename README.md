@@ -1,6 +1,6 @@
 # Master Course Planner 🎓
 
-**A simple tool to plan your HES-SO Master's degree in Data Science.**
+**A simple tool to plan your HES-SO Master of Science in Engineering's degree.**
 
 This application helps you choose your courses, organize your schedule, and make sure you meet all the requirements for your degree.
 
@@ -10,7 +10,12 @@ This application helps you choose your courses, organize your schedule, and make
 
 ## Who is this for? 👀
 
-This tool is designed for **HES-SO Master's students** in the **Data Science & Engineering** major.
+This tool is designed for **HES-SO Master's students** in the following majors.
+* **Data Science (DS)**
+* **Computer Science (CS) (Cybersecurity)**
+* **Computer Science (CS) (Communication Systems)**
+* **Computer Science (CS) (Embedded Systems)**
+* **Information and Cybersecurity (ICS)**
 
 ## What can you do? 🚀
 
